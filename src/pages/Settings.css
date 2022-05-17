@@ -1,0 +1,76 @@
+.settingsPage {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.settingoptions{
+    width: 640px;
+    height: 60px;
+
+    padding-left: 10px;
+    border-radius: 12px;
+    background-color: #1c1b1bed;
+   display: inline-block;
+    color: white;
+
+}
+.pfp {
+    color:#68738D;
+    padding-left: 10px;
+}
+
+.pfpOptions {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    gap:30px;
+}
+
+.pfpOption {
+    border-radius: 50%;
+    margin-top:10px;
+    width:110px;
+    height:110px;
+    border:5px;
+}
+
+.pfpOption {
+    cursor: pointer;
+}
+
+.pfpOptionSelected {
+    border-radius: 50%;
+    margin-top:10px;
+    width:110px;
+    height:110px;
+    border:5px solid #1d24f2;
+}
+
+.banner {
+    width:90%;
+    height:200px;
+    object-fit: cover;
+}
+
+.banner:hover {
+    cursor:pointer;
+}
+
+.save {
+    background-color: #1DA1F2;
+    padding: 10px 20px;
+    border-radius: 1000px;
+    color: white;
+    font-weight: 600;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    margin-left: 80%;
+    margin-top: 20px;
+}
+
+.save:hover{
+    cursor:pointer;
+}

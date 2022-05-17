@@ -181,7 +181,7 @@ const Home = () => {
       
       
     </div>
-      <img style={{width:19, marginRight:300}} src={emojiimg}  onClick={() => setShowPicker(val => !val)}/>{showPicker && <Picker
+      <img className="emojii"  src={emojiimg}  onClick={() => setShowPicker(val => !val)}/>{showPicker && <Picker
           pickerStyle={{ width: '100%' }}
           onEmojiClick={onEmojiClick} />}
 

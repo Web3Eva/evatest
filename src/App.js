@@ -9,15 +9,22 @@ import eva from "./Eva.png";
 import "./App.css";
 import {useMoralis} from "react-moralis"
 import { ConnectButton} from "web3uikit";
+import ReactGA from 'react-ga';
 
 
 const App = () => {
 
   const {isAuthenticated} = useMoralis()
-
+  document.title = "Eva"
+  const TRACKING_ID = "UA-228923279-2"; 
+  ReactGA.initialize(TRACKING_ID);
 
   return (
     <>
+      
+        
+      
+          
       {isAuthenticated ? (
         <div className="page">
         <div className="sideBar"> 

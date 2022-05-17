@@ -14,7 +14,7 @@ const Sidebar = () => {
         <div className="menu">
 
           <div className="details" >
-            <img style={{width:70}} src={eva}></img>
+            <img className="imageva" src={eva}></img>
           </div>
 
           <Link to="/" className="link" style={{marginTop:30}}>

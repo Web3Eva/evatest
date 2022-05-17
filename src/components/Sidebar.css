@@ -1,6 +1,6 @@
 .siderContent{
-    padding-top: 20px;
-    padding-right: 5.859375vw;
+    padding-top: 100px;
+    padding-right: 4.859375vw;
     justify-content: space-between;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: start;
     gap: 14px;
-    margin-top: 20px;
+    margin-top: 25px;
     align-items: center;
     font-weight: 600;
     font-size: 20px;
@@ -36,11 +36,39 @@
     cursor:pointer;
     background-color: #282828;
 }
+.imageva{
+    width: 70px;
+}
 
-.profile{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+
+@media all and (min-width:1500px){
+    .siderContent{
+        padding-top: 100px;
+        padding-right: 5.859375vw;
+        justify-content: space-between;
+        display: flex;
+        flex-direction: column;
+        height:85vh;
+        align-items: end;
+    }
+    .menuItems {
+        display: flex;
+        justify-content: start;
+        gap: 14px;
+        margin-top: 30px;
+        align-items: center;
+        font-weight: 600;
+        font-size: 25px;
+        padding:10px;
+        border-radius: 1000px;
+        color: white !important;
+        text-decoration: none !important;
+    }
+    .imageva{
+        width: 4.557291666666667vw;
+    }
+    
+    
 }
 
 

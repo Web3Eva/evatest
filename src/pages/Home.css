@@ -9,6 +9,10 @@
     font-size: 20px;
     z-index: 999;
 }
+.emojii{
+    width: 19px;
+    margin-right: 400px;
+}
 
 .profileEva {
     display: flex;
@@ -38,7 +42,7 @@
 }
 .eva {
     background-color: #1DA1F2;
-    padding: 10px 20px;
+    padding: 0.6510416666666666vw 1.3020833333333333vw;
     border-radius: 1000px;
     color: white;
     font-weight: 600;
@@ -53,7 +57,7 @@
 
 .evaOptions {
     display: flex;
-    justify-content: end;
+    margin-right: 10px;
     gap: 10px;
 }
 

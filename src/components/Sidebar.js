@@ -20,28 +20,28 @@ const Sidebar = () => {
           <Link to="/" className="link" style={{marginTop:30}}>
             <div className="menuItems">
               <Icon fill="#ffffff" size={33} svg="list"/>
-              Home
+              <div className="sidetext">Home</div>
             </div>
           </Link>
 
           <Link to="/profile" className="link">
             <div className="menuItems">
               <Icon fill="#ffffff" size={33} svg="user"/>
-              Profile
+              <div className="sidetext">Profile</div>
             </div>
           </Link>
 
           <Link to="/comingsoon" className="link">
             <div className="menuItems">
               <Icon fill="#ffffff" size={33} svg="stars"/>
-              Status
+              <div className="sidetext">Status</div>
             </div>
           </Link>
 
           <Link to="/settings" className="link">
             <div className="menuItems">
               <Icon fill="#ffffff" size={33} svg="cog"/>
-              Settings
+              <div className="sidetext">Settings</div>
             </div>
           </Link>
 
@@ -52,7 +52,7 @@ const Sidebar = () => {
             }}>
             <div className="menuItems">
                 <Icon fill="#ffffff" size={33} svg="logOut"/>
-                Logout
+                <div className="sidetext">Logout</div>
               </div>
           </div>
 

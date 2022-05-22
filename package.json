@@ -1,8 +1,16 @@
 {
+  "homepage": ".",
   "name": "eva",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@solana/spl-token": "^0.2.0",
+    "@solana/wallet-adapter-base": "^0.9.5",
+    "@solana/wallet-adapter-material-ui": "^0.16.5",
+    "@solana/wallet-adapter-react": "^0.15.4",
+    "@solana/wallet-adapter-react-ui": "^0.9.6",
+    "@solana/wallet-adapter-wallets": "^0.16.1",
+    "@solana/web3.js": "^1.42.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
@@ -15,7 +23,6 @@
     "os-browserify": "^0.3.0",
     "prettier": "^2.6.2",
     "react": "^17.0.2",
-    "react-app-rewired": "^2.2.1",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
@@ -33,7 +40,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-app-rewired eject"
   },
   "eslintConfig": {
     "extends": [
@@ -52,5 +59,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "react-app-rewired": "^2.2.1"
   }
 }

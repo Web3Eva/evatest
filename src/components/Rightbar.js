@@ -2,14 +2,9 @@ import React from "react";
 import './Rightbar.css';
 import { useMoralis } from "react-moralis";
 import { defaultImgs } from "../defaultimgs";
-
-
-
 const Rightbar = () => {
-
   const { Moralis} = useMoralis();
   const user = Moralis.User.current();
-
   const trends = [
    /* {
       img: spaceshooter,
@@ -32,12 +27,11 @@ const Rightbar = () => {
       link: "https://academy.moralis.io/all-courses",
     },*/
   ];
-
   return (
     <>
     <div className="rightbarContent">
     <div className="details">
-          <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
+          <img id="profileimgo" src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
           <div className="profile">
             <div className="who">
               {user.attributes.username.slice(0, 6)}
@@ -47,9 +41,7 @@ const Rightbar = () => {
             </div>
           </div>
         </div>
-
       <div className="trends" >
-      
         Coming Soon!
         {trends.map((e)=> {
           return(

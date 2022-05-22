@@ -7,19 +7,16 @@
 .settingoptions{
     width: 640px;
     height: 60px;
-
     padding-left: 10px;
     border-radius: 12px;
     background-color: #1c1b1bed;
-   display: inline-block;
+    display: inline-block;
     color: white;
-
 }
 .pfp {
     color:#68738D;
     padding-left: 10px;
 }
-
 .pfpOptions {
     display: flex;
     justify-content: start;
@@ -27,7 +24,6 @@
     margin-top: 10px;
     gap:30px;
 }
-
 .pfpOption {
     border-radius: 50%;
     margin-top:10px;
@@ -35,11 +31,9 @@
     height:110px;
     border:5px;
 }
-
 .pfpOption {
     cursor: pointer;
 }
-
 .pfpOptionSelected {
     border-radius: 50%;
     margin-top:10px;
@@ -47,17 +41,14 @@
     height:110px;
     border:5px solid #1d24f2;
 }
-
 .banner {
     width:90%;
     height:200px;
     object-fit: cover;
 }
-
 .banner:hover {
     cursor:pointer;
 }
-
 .save {
     background-color: #1DA1F2;
     padding: 10px 20px;
@@ -70,7 +61,6 @@
     margin-left: 80%;
     margin-top: 20px;
 }
-
 .save:hover{
     cursor:pointer;
 }

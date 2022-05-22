@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.web3eva\.netlify.app$
+RewriteRule ^/?$ "http\:\/\/.web3eva\.netlify.app\/" [R=301,L]

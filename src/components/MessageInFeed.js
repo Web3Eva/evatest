@@ -4,20 +4,22 @@ import {defaultImgs} from "../defaultimgs"
 import {Icon} from "web3uikit"
 import { useMoralis } from "react-moralis";
 import { useEffect, useState } from "react";
-
-
 const MessageInFeed = ({profile}) => {
-  
   const [MessageArr, setMessageArr] = useState();
   const {Moralis, account} = useMoralis();
-
+  
   useEffect(() => {
+    
     async function getMessages() {
       try {
+        let queriy = new Moralis.Query('Messages');
+        let messageget = await queriy.subscribe();
+        messageget.on('create', (object) => {
+          getMessages()
+        });
         const Messages = Moralis.Object.extend("Messages");
         const query = new Moralis.Query(Messages);
         if (profile) {
-          
           query.equalTo("senderAcc", account);
         }
         const results = await query.find();
@@ -26,11 +28,9 @@ const MessageInFeed = ({profile}) => {
         console.error(error);
       }
     }
-    
     getMessages();
-    
   }, [profile]);
-
+  
   return (
     <>
     {MessageArr?.map((e) => {
@@ -64,7 +64,6 @@ const MessageInFeed = ({profile}) => {
                   </div>
                   <div className="interactionNums">
                     <Icon fill="#3f3f3f" size={20} svg="star" />
-                    
                   </div>
                   <div className="interactionNums">
                     <Icon fill="#3f3f3f" size={20} svg="matic" />
@@ -75,12 +74,8 @@ const MessageInFeed = ({profile}) => {
           </>
         );
       }).reverse()}
-    
-
-
     </>
   );
 };
-
 export default MessageInFeed;
 

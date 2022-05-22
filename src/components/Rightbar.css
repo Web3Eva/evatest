@@ -29,17 +29,14 @@
     cursor: pointer;
     background-color: #2c353e;
 }
-
 .trendImg{
     width: 100px;
     border-radius: 3px;
 }
-
 .trendText {
     font-size: 15px;
     font-weight: normal;
 }
-
 .more {
     font-size: 15px;
     font-weight: normal;

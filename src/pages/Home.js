@@ -5,34 +5,20 @@ import {TextArea, Icon} from "web3uikit";
 import {useState, useRef} from "react";
 import MessageInFeed from "../components/MessageInFeed"
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
-import emojiimg from "../images/emoji.png";
-import Picker from 'emoji-picker-react';
-
-
+import {Helmet} from "react-helmet"; 
 const Home = () => {
-
   const { Moralis } = useMoralis();
   const user = Moralis.User.current();
   const contractProcessor = useWeb3ExecuteFunction();
-
   const inputFile = useRef(null);
   const [selectedFile, setSelectedFile] = useState();
   const [theFile, setTheFile] = useState();
   const [message, setMessage] = useState();
   const [inputStr, setInputStr] = useState('');
-  const [showPicker, setShowPicker] = useState(false);
-  
-  const onEmojiClick = (event, emojiObject) => {
-    setInputStr(prevInput => prevInput + emojiObject.emoji);
-    setShowPicker(false);
-  };
- 
-
-
-
  async function maticSend() {
-   if(!message) return;
-
+   if(!message){
+     message = " "
+   }
    let img;
     if (theFile) {
       const data = theFile;
@@ -42,7 +28,6 @@ const Home = () => {
     }else{
       img = "No Img"
     }
-
     let options = {
       contractAddress: "0xee8530268768C1f20A42b4B43e38e2469b651d1D",
       functionName: "sendMessage",
@@ -106,7 +91,6 @@ const Home = () => {
       },
       msgValue: Moralis.Units.ETH(1),
     }
-
     await contractProcessor.fetch({
       params: options,
       onSuccess: () => {
@@ -117,51 +101,55 @@ const Home = () => {
       }
     });
  }
-
-
-
   async function saveMessage() {
-    if (!message) return;
+    
     setInputStr(message)
     const Messages = Moralis.Object.extend("Messages");
     const newMessage = new Messages;
-
+    var acl = new Moralis.ACL();
+    acl.setPublicReadAccess(true);
+    acl.setWriteAccess(Moralis.User.current().id, true);
     newMessage.set("messageTxt", message)
     newMessage.set("senderPfp", user.attributes.pfp);
     newMessage.set("senderAcc", user.attributes.ethAddress);
     newMessage.set("senderUsername", user.attributes.username);
-
+    newMessage.set("ACL", acl)
+    
     if(theFile) {
       const data = theFile;
       const file = new Moralis.File(data.name, data);
       await file.saveIPFS();
       newMessage.set("messageImg", file.ipfs());
     }
-
     await newMessage.save();
     window.location.reload();
   }
-
   const onImageClick = () => {
     inputFile.current.click();
   };
-
-  
-
+  const opencreate = () => {
+    document.getElementById("creatememe").style.display = "flex"
+  }
   const changeHandler = (event) =>{
     const img = event.target.files[0];
     setTheFile(img);
     setSelectedFile(URL.createObjectURL(img))
   }
-
   return (
     <>
+    <Helmet>
+          <meta charSet="utf-8" />    
+         
+          <meta name="description" content = "Connect with friends and family with the power of Memes. Share memes, grow your status and become the meme lord!"/>
+          <meta name="keywords" content = "connect, friends, family, share, memes"/>
+  </Helmet>
     <div className="pageIdentify">Home</div>
       <div className="mainContent">
+       
         <div className="profileEva">
           <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
           <div className="evaBox">
-            <TextArea  label="" id="tweetTxtArea" name="tweetTxtArea" value={inputStr} onChange={(e) => setMessage(e.target.value)} placeholder="Start a message!" type="text" width="95%" className="textarea"></TextArea>
+            <textArea  label="" id="tweetTxtArea" name="tweetTxtArea" value={inputStr} onChange={(e) => setMessage(e.target.value)} placeholder="Start a message!" type="text" width="100%" style={{backgroundColor: "transparent", fontSize: 20, fontFamily: "Arial, Helvetica, sans-serif", resize: "none", color:"white", border: "none",outline: "none", paddingLeft:"20px"}}></textArea>
               {selectedFile && (
                 <img src={selectedFile} className="evaImg"></img>
               )}
@@ -173,33 +161,25 @@ const Home = () => {
                   ref={inputFile}
                   onChange={changeHandler}
                   style={{display:"none"}}
-                
                 />
                 <Icon fill="#1DA1F2" size={20} svg="image"></Icon>
-    
               </div><div>
-      
-      
     </div>
-      <img className="emojii"  src={emojiimg}  onClick={() => setShowPicker(val => !val)}/>{showPicker && <Picker
-          pickerStyle={{ width: '100%' }}
-          onEmojiClick={onEmojiClick} />}
-
-              
+   
               <div className="evaOptions">
                   <div className="eva" onClick={saveMessage}>Send</div>
+                  <div className="eva" onClick={opencreate}>Create</div>
                   <div className="eva" onClick={maticSend} style={{backgroundColor:"#8247e5"}}><Icon fill="#ffffff" size={20} svg="matic"></Icon></div>
-
+                  
               </div>
             </div>
           </div>
-          
         </div>
-        <MessageInFeed profile={true}/>
-
+        
+        
+        <MessageInFeed profile={false}/>
       </div>
     </>
   );
 };
-
 export default Home;

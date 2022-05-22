@@ -6,11 +6,9 @@
     justify-content: space-between;
     display: flex;
 }
-
 .feedEva:hover {
     background-color: #272626ed;
 }
-
 .completeEva {
     display: flex;
     justify-content: start;
@@ -19,14 +17,12 @@
     width:89%;
     gap:10px;
 }
-
 .interactions {
     margin-top: 10px;
     display: flex;
     justify-content: start;
     gap: 150px;
 }
-
 .interactionNums {
     color:#3f3f3f;
     display: flex;
@@ -35,32 +31,27 @@
     padding: 10px;
     border-radius: 1000px;
 }
-
 .interactionNums:hover {
     cursor:pointer;
     background-color: #1da0f20b;
 }
-
 .who {
     display: flex;
     gap: 10px;
     font-weight: 600;
     align-items: center;
 }
-
 .accWhen {
     font-size: 15px;
     font-weight: 400;
     color: gray;
 }
-
 .evaContent{
     display: flex;
     justify-content: start;
     flex-direction: column;
     gap:10px;
 }
-
 .evaImg {
     width: 98%;
     border-radius: 10px;

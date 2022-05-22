@@ -6,6 +6,10 @@
     flex-direction: column;
     height:85vh;
     align-items: end;
+    position: relative;
+}
+.sidetext{
+    display: block;
 }
 
 .details {
@@ -17,7 +21,6 @@
     align-items: center;
     text-decoration: none !important;
 }
-
 .menuItems {
     display: flex;
     justify-content: start;
@@ -30,8 +33,8 @@
     border-radius: 1000px;
     color: white !important;
     text-decoration: none !important;
+    
 }
-
 .menuItems:hover{
     cursor:pointer;
     background-color: #282828;
@@ -39,8 +42,6 @@
 .imageva{
     width: 70px;
 }
-
-
 @media all and (min-width:1500px){
     .siderContent{
         padding-top: 100px;
@@ -66,11 +67,22 @@
     }
     .imageva{
         width: 4.557291666666667vw;
+    }  
+}
+@media all and (max-width:770px){
+    .sidetext{
+        display: none;
+    }
+    .imageva{
+        width: 10.57291666666667vw;
+    } 
+    .details {
+        
+        margin-left: 0;
+       
     }
     
-    
 }
-
 
 
 

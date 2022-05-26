@@ -28,8 +28,7 @@ const Settings = () => {
         limit: 50
       }
       const mumbaiNFTs = await Web3Api.account.getNFTs(options);
-      const type = metaData.name
-      alert(type)
+      
       const images = mumbaiNFTs.result.map(
         (e) => resolveLink(JSON.parse(e.metadata)?.image)
       );      
@@ -124,6 +123,7 @@ const Settings = () => {
               src={selectedFile}
               onClick={onBannerClick}
               className="banner"
+              alt = "banner"
             ></img>
             <input
               type="file"

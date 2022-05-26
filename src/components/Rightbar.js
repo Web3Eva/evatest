@@ -31,7 +31,7 @@ const Rightbar = () => {
     <>
     <div className="rightbarContent">
     <div className="details">
-          <img id="profileimgo" src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
+          <img alt="profileimg" id="profileimgo" src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
           <div className="profile">
             <div className="who">
               {user.attributes.username.slice(0, 6)}

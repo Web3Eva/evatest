@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 import {defaultImgs} from "../defaultimgs"
-import {TextArea, Icon} from "web3uikit";
+import { Icon} from "web3uikit";
 import {useState, useRef} from "react";
 import MessageInFeed from "../components/MessageInFeed"
 import { useMoralis, useWeb3ExecuteFunction } from "react-moralis";
@@ -108,13 +108,17 @@ const Home = () => {
     const newMessage = new Messages;
     var acl = new Moralis.ACL();
     acl.setPublicReadAccess(true);
-    acl.setWriteAccess(Moralis.User.current().id, true);
+    acl.setPublicWriteAccess(true);
+    const currentDate = new Date();
+    const timestamp = currentDate.getTime();
     newMessage.set("messageTxt", message)
     newMessage.set("senderPfp", user.attributes.pfp);
     newMessage.set("senderAcc", user.attributes.ethAddress);
     newMessage.set("senderUsername", user.attributes.username);
     newMessage.set("ACL", acl)
-    
+    newMessage.set("likes", 0)
+    newMessage.set("likelist", "")
+    newMessage.set("rating", 10000000000000 -  timestamp)
     if(theFile) {
       const data = theFile;
       const file = new Moralis.File(data.name, data);
@@ -147,7 +151,7 @@ const Home = () => {
       <div className="mainContent">
        
         <div className="profileEva">
-          <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic"></img>
+          <img src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]} className="profilePic" alt="profilepic"></img>
           <div className="evaBox">
             <textArea  label="" id="tweetTxtArea" name="tweetTxtArea" value={inputStr} onChange={(e) => setMessage(e.target.value)} placeholder="Start a message!" type="text" width="100%" style={{backgroundColor: "transparent", fontSize: 20, fontFamily: "Arial, Helvetica, sans-serif", resize: "none", color:"white", border: "none",outline: "none", paddingLeft:"20px"}}></textArea>
               {selectedFile && (

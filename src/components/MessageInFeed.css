@@ -9,6 +9,12 @@
 .feedEva:hover {
     background-color: #272626ed;
 }
+.yellow path{
+    fill: yellow;
+}
+.white path{
+    fill: whitesmoke;
+}
 .completeEva {
     display: flex;
     justify-content: start;
@@ -24,7 +30,7 @@
     gap: 150px;
 }
 .interactionNums {
-    color:#3f3f3f;
+    
     display: flex;
     justify-content: start;
     gap: 10px;

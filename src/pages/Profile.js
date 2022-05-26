@@ -18,9 +18,9 @@ const Profile = () => {
           
   </Helmet>
     <div className="pageIdentify">Profile</div>
-    <img id="profileBanner" className="profileBanner" src={user.attributes.banner ? user.attributes.banner : defaultImgs[1]}></img>
+    <img alt="profilebanner" id="profileBanner" className="profileBanner" src={user.attributes.banner ? user.attributes.banner : defaultImgs[1]}></img>
     <div className="pfpContainer">
-      <img id="profilePFP" className="profilePFP" src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]}></img>
+      <img alt="profilepfp" id="profilePFP" className="profilePFP" src={user.attributes.pfp ? user.attributes.pfp : defaultImgs[0]}></img>
       <div id="profileName" className="profileName">{user.attributes.username.slice(0, 6)}</div>
       <div className="profileWallet">{`${user.attributes.ethAddress.slice(0, 4)}...
             ${user.attributes.ethAddress.slice(38)}`}</div>

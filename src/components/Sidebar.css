@@ -74,11 +74,12 @@
         display: none;
     }
     .imageva{
-        width: 10.57291666666667vw;
+        width: 8.57291666666667vw;
+        margin-left: 3vw;
     } 
     .details {
         
-        margin-left: 0;
+        margin-left: -30px;
        
     }
     

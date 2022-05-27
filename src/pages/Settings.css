@@ -5,7 +5,7 @@
     gap: 40px;
 }
 .settingoptions{
-    width: 640px;
+    width: 52.375vw;
     height: 60px;
     padding-left: 10px;
     border-radius: 12px;
@@ -16,7 +16,9 @@
 .pfp {
     color:#68738D;
     padding-left: 10px;
+    width: 55.125vw;
 }
+  
 .pfpOptions {
     display: flex;
     justify-content: start;
@@ -58,9 +60,17 @@
     width: 70px;
     display: flex;
     justify-content: center;
-    margin-left: 80%;
+    margin-left: 46.875vw;
     margin-top: 20px;
 }
 .save:hover{
     cursor:pointer;
 }
+@media all and (max-width:650px){
+    .pfp {
+      width: 75vw;
+    }
+    .settingoptions{
+        width: 55vw;
+    }
+  }

@@ -88,7 +88,7 @@ const MessageInFeed = ({profile, other,  accountother}) => {
         });
         const Messages = Moralis.Object.extend("Messages");
         const query = new Moralis.Query(Messages);
-        if (profile && other) {
+        if (profile) {
           query.equalTo("senderAcc", account);
         }else if (other == true){
           query.equalTo("senderAcc", accountother)
@@ -155,9 +155,7 @@ const MessageInFeed = ({profile, other,  accountother}) => {
                   <div  onClick={() => like(e.id)} className="interactionNums">
                     <Icon id={"icon" + e.id} fill="currentColor" stroke="currentColor" size={20} svg="star" /><p style={{margin:0}} id={e.id}>{e.attributes.likes}</p>
                   </div>
-                  <div className="interactionNums">
-                    <Icon fill="#f5f5f5" size={20} svg="matic" />
-                  </div>
+                  
                 </div>
               </div>
             </div>

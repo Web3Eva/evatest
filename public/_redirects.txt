@@ -1,2 +1,0 @@
-/settings https://web3eva.netlify.app/settings
-/en/* /en/404.html 404

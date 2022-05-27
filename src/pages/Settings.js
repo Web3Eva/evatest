@@ -55,6 +55,7 @@ const Settings = () => {
     }
     if (selectedPFP){
       myDetails.set("pfp", selectedPFP);
+      
       document.getElementById("profileimgo").src = selectedPFP
       
     }
@@ -85,14 +86,15 @@ const Settings = () => {
         <Input
           label="Name"
           name="NameChange"
-          width="100%"
+          width="59.375vw"
           labelBgColor="rgba(47,49,54,255)"
           onChange={(e)=> setUsername(e.target.value)}
         />
         <Input
           label="Bio"
+          className = "settingoptions"
           name="bioChange"
-          width="100%"
+          width="59.375vw"
           labelBgColor="rgba(47,49,54,255)"
           onChange={(e)=> setBio(e.target.value)}
         />

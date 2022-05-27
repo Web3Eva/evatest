@@ -25,8 +25,28 @@
 .profilePic {
     border-radius: 50%;
     width: 50px;
+    margin-right: 10px;
     height: 50px;
 }
+@media all and (max-width:794px){
+    .profilePic {
+        width: 45px;
+        height: 45px;
+    }
+}
+@media all and (max-width:603px){
+    .profilePic {
+        width: 40px;
+        height: 40px;
+    }
+}
+@media all and (max-width:410px){
+    .profilePic {
+        width: calc(50px - 1.8552875695732838vh);
+        height: calc(50px - 1.8552875695732838vh);
+    }
+}
+
 .imgOrEva {
     display: flex;
     justify-content: space-between;

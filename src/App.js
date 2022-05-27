@@ -5,6 +5,7 @@ import Profile from "./pages/Profile";
 import Settings from "./pages/Settings";
 import Sidebar from "./components/Sidebar";
 import Rightbar from "./components/Rightbar";
+import Profileothers from "./pages/Profileothers"
 import eva from "./Eva.png";
 import "./App.css";
 import {useMoralis} from "react-moralis"
@@ -35,6 +36,9 @@ const App = () => {
                 <Route path="/" element={<Home />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/settings" element={<Settings />} />
+                <Route path="/profileothers" element={<Profileothers />} />
+                
+
               </Routes>
             </div>
             <div className="rightBar"> 

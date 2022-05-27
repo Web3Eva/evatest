@@ -181,7 +181,7 @@ const Home = () => {
         </div>
         
         
-        <MessageInFeed profile={false}/>
+        <MessageInFeed profile={false} other={false}  accountother=""/>
       </div>
     </>
   );

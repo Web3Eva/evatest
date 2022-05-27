@@ -36,7 +36,7 @@ const Profile = () => {
           </div>
       </div>
     </div>
-    <MessageInFeed profile={true}></MessageInFeed>
+    <MessageInFeed profile={true} other={false}  accountother=""></MessageInFeed>
     </>
   );
 };

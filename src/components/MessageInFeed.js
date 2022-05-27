@@ -2,14 +2,51 @@ import React from "react";
 import './MessageInFeed.css';
 import {defaultImgs} from "../defaultimgs"
 import {Icon} from "web3uikit"
+import { Link } from "react-router-dom";
 import { useMoralis} from "react-moralis";
 import { useEffect, useState } from "react";
-const MessageInFeed = ({profile}) => {
+const MessageInFeed = ({profile, other,  accountother}) => {
   const [MessageArr, setMessageArr] = useState();
   const {Moralis, account} = useMoralis();
   const user = Moralis.User.current();
-  
- 
+  let rendtrue = 0
+  async function follow(id){
+    if(rendtrue == 1){
+      let usersend = id
+      const queryt = new Moralis.Query("_User")
+      if(user.attributes.ethAddress != usersend){
+       queryt.equalTo("ethAddress", user.attributes.ethAddress)
+       const resultst = await queryt.find()
+       resultst.map((ei) =>{
+         let following = ei.attributes.following
+         let followinglist = following.split("§")
+         if(followinglist.includes(usersend)){
+           const index = followinglist.indexOf(usersend);
+           if (index > -1) {
+             followinglist.splice(index, 1);
+           }
+           user.set("following", followinglist.join("§"))
+           user.save()
+           for (var i=0;i<document.getElementsByName(id).length;i++){
+            document.getElementsByName(id)[i].innerText="following";
+            }
+         }else{
+           followinglist.push(usersend)
+           user.set("following", followinglist.join("§"))
+           user.save()
+           for (var i=0;i<document.getElementsByName(id).length;i++){
+            document.getElementsByName(id)[i].innerText="unfollowed";
+            }
+         }
+       })
+      }else{
+        alert("Can't follow yourself!")
+      }
+}
+    }
+   setTimeout(() => {
+     rendtrue = 1
+   }, 1000);
    async function like(id){
     localStorage.setItem("id", id)
         const query = new Moralis.Query("Messages")
@@ -35,25 +72,13 @@ const MessageInFeed = ({profile}) => {
             document.getElementById("icon" + localStorage.getItem("id")).className = "white"
             e.set("likes", likevalue)
             e.set("likelist", likelistsplit.join("§"))
-            e.save()
-            
+            e.save() 
           }
-          
-          
-          document.getElementById(localStorage.getItem("id")).innerText = likevalue
-          
-          
-          
-
-       
-        
-      
-      
+          document.getElementById(localStorage.getItem("id")).innerText = likevalue 
     });
    
   }
   useEffect(() => {
-    
     async function getMessages() {
       try {
         let queriy = new Moralis.Query('Messages');
@@ -63,8 +88,10 @@ const MessageInFeed = ({profile}) => {
         });
         const Messages = Moralis.Object.extend("Messages");
         const query = new Moralis.Query(Messages);
-        if (profile) {
+        if (profile && other) {
           query.equalTo("senderAcc", account);
+        }else if (other == true){
+          query.equalTo("senderAcc", accountother)
         }
         const results = await query.find();
         setMessageArr(results);
@@ -74,6 +101,12 @@ const MessageInFeed = ({profile}) => {
     }
     getMessages();
   }, [profile]);
+
+  function prepare(id){
+    localStorage.setItem("chp", id)
+  }
+  
+        
   
   return (
     <>
@@ -81,8 +114,20 @@ const MessageInFeed = ({profile}) => {
         return (
           <>
             <div className="feedEva">
-              <img src={e.attributes.senderPfp ? e.attributes.senderPfp : defaultImgs[0]} className="profilePic" alt="profilepic"></img>
-              <div className="completeEva">
+            <div className="container">
+            <Link to="/profileothers">
+              <img onClick={()=>prepare(e.attributes.senderAcc)} src={e.attributes.senderPfp ? e.attributes.senderPfp : defaultImgs[0]} className="profilePic" alt="profilepic"></img>
+            </Link>
+            
+              <div className="middle">
+                <div className="text">
+                  <button name={e.attributes.senderAcc} onClick={()=>follow(e.attributes.senderAcc)} className="follow">Follow {e.attributes.senderUsername}</button>
+                </div>
+              </div>
+            </div>
+
+           
+              <div  className="completeEva">
                 <div className="who">
                 {e.attributes.senderUsername.slice(0, 6)}
                   <div className="accWhen">{
